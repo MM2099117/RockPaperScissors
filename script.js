@@ -71,6 +71,8 @@ function playRound(sysChoice, userChoice){
             return gameResult;
     }
 
+
+    function game(){
     for(let i = 0; i<5; i++){
 
     var sysChoice = getSysChoice();
@@ -80,4 +82,7 @@ function playRound(sysChoice, userChoice){
     gameResult = playRound(sysChoice, userChoice);
     console.log(gameResult);
 
+        }
     }
+
+    game();
