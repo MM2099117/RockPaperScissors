@@ -1,6 +1,8 @@
 //create data structure to hold all three options
 var options = ['Rock', 'Paper', 'Scissors'];
-
+var userScore = 0;
+var systemScore = 0;
+var gameRound = 0;
 
 //get the user's chosen one from a prompt
 function getUserChoice(){
@@ -33,56 +35,62 @@ function getSysChoice(){
 
 //play a round of rock paper scissors and return winner
 function playRound(sysChoice, userChoice){
-    let gameResult;
-            if(sysChoice == userChoice){
-                let gameResult = "The game is a draw."
-                return gameResult;
-
-            }
-            else if(sysChoice == "PAPER" && userChoice == "SCISSORS"){
-                gameResult = "User wins."
-                return gameResult;
-
-            }
-            else if(userChoice == "PAPER" && sysChoice == "SCISSORS"){
-                gameResult = "System wins."
-                return gameResult;
-
-            }
-            else if(userChoice == "ROCK" && sysChoice == "SCISSORS"){
-                gameResult = "User wins."
-                return gameResult;
-
-            }
-            else if(sysChoice == "ROCK" && userChoice == "SCISSORS"){
-                gameResult = "System wins."
-                return gameResult;
-
-            }
-            else if(sysChoice == "PAPER" && userChoice == "ROCK"){
-                gameResult = "System wins."
-                return gameResult;
-            }
-            else if(sysChoice == "ROCK" && userChoice == "PAPER"){
-                gameResult = "User wins";
-                return gameResult;
-            }
-            console.log(gameResult);            
-            return gameResult;
+    gameRound++;
+    let roundResult;
+    if(userChoice === sysChoice) 
+    {
+        roundResult = "Tie.";
+        return roundResult;
+    }
+    else if 
+    (
+        (userChoice === "Rock" && sysChoice === "Scissors") ||
+        (userChoice === "Paper" && sysChoice === "Rock") ||
+        (userChoice === "Scissors" && sysChoice === "Paper")
+    )
+    {
+        userScore++;
+        roundResult = "User wins this round."
+        return roundResult;
+    }
+    else 
+    {
+        systemScore++;
+        roundResult  = "System wins this round."
+        return roundResult;
+    }
     }
 
 
-    function game(){
-    for(let i = 0; i<5; i++){
+    function getGameResult(userScore, systemScore){
+        let finalResult;
+        if(userScore > systemScore || userScore >= 3){
+            finalResult = "User wins the game."
+        }
+        else if(systemScore > userScore || systemScore >= 3){
+            finalResult = "System wins the game."
+        }
+        else{
+            finalResult = "The game is a draw."
+        }
 
+        return finalResult;
+    }
+
+    function game()
+    {
+    while(gameRound < 5)
+    {
     var sysChoice = getSysChoice();
     var userChoice = getUserChoice();
     console.log("User choice is " + userChoice);
     console.log("System choice is " + sysChoice);
-    gameResult = playRound(sysChoice, userChoice);
-    console.log(gameResult);
-
-        }
+    roundResult = playRound(sysChoice, userChoice);
+    console.log(roundResult);
+    console.log('\n');
+    }
+    finalResult = getGameResult(userScore, systemScore);
+    console.log(finalResult);
     }
 
     game();
