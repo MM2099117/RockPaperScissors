@@ -37,37 +37,39 @@ function getSysChoice(){
 function playRound(sysChoice, userChoice){
     gameRound++;
     let roundResult;
-    if(userChoice === sysChoice) 
-    {
-        roundResult = "Tie.";
-        return roundResult;
-    }
-    else if 
+    if 
     (
-        (userChoice === "Rock" && sysChoice === "Scissors") ||
-        (userChoice === "Paper" && sysChoice === "Rock") ||
-        (userChoice === "Scissors" && sysChoice === "Paper")
+        (userChoice === "ROCK" && sysChoice === "SCISSORS") ||
+        (userChoice === "PAPER" && sysChoice === "ROCK") ||
+        (userChoice === "SCISSORS" && sysChoice === "PAPER")
     )
     {
         userScore++;
         roundResult = "User wins this round."
         return roundResult;
     }
-    else 
+
+    else if(userChoice === sysChoice) 
+    {
+        roundResult = "Tie.";
+        return roundResult;
+    }
+    else
     {
         systemScore++;
         roundResult  = "System wins this round."
         return roundResult;
     }
+ 
     }
 
 
     function getGameResult(userScore, systemScore){
         let finalResult;
-        if(userScore > systemScore || userScore >= 3){
+        if(userScore > systemScore){
             finalResult = "User wins the game."
         }
-        else if(systemScore > userScore || systemScore >= 3){
+        else if(systemScore > userScore){
             finalResult = "System wins the game."
         }
         else{
