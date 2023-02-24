@@ -78,21 +78,45 @@ function playRound(sysChoice, userChoice){
 
         return finalResult;
     }
-
+    
     function game()
     {
-    while(gameRound < 5)
-    {
+
     var sysChoice = getSysChoice();
     var userChoice = getUserChoice();
-    console.log("User choice is " + userChoice);
-    console.log("System choice is " + sysChoice);
-    roundResult = playRound(sysChoice, userChoice);
-    console.log(roundResult);
-    console.log('\n');
-    }
+
+    const results_div = document.querySelector('results_div');
+    const choices_div = document.querySelector('choices_div');
+
+    const uc = document.createElement('p');
+    uc.textContent = "User choice is: " + userChoice;
+    choices_div.appendChild(uc);
+
+    const sc = document.createElement('p');
+    sc.textContent = "System choice is: " + sysChoice;
+    choices_div.appendChild(sc);
+
+    const rst = document.createElement('p');
+    rst.textContent = roundResult;
+
     finalResult = getGameResult(userScore, systemScore);
-    console.log(finalResult);
+
+    const frst = document.createElement('p');
+    frst.textContent = finalResult;
+    results_div.appendChild(rst);
+    results_div.appendChild(frst);
+
+
     }
 
-    game();
+
+    //-----------------------------------------------------------//
+
+    const r = document.getElementById("rock_btn");
+    r.addEventListener("click",getUserChoice(), getSysChoice(), playRound(userChoice, sysChoice));
+
+    const s = document.getElementById("scissors_btn");
+    s.addEventListener("click",getUserChoice(), getSysChoice(), playRound(userChoice, sysChoice));
+
+    const p = document.getElementById("paper_btn");
+    p.addEventListener("click",getUserChoice(), getSysChoice(), playRound(userChoice, sysChoice));
