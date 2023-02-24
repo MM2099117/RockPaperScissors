@@ -3,32 +3,21 @@ var options = ['Rock', 'Paper', 'Scissors'];
 var userScore = 0;
 var systemScore = 0;
 var gameRound = 0;
+let userChoice = "";
+let sysChoice = "";
 
 //get the user's chosen one from a prompt
-function getUserChoice(){
-    let userChoice = prompt("Please enter your Rock Paper Scissors choice:");
+function getUserChoice(userChoice){
+    
 
-    userChoice = userChoice.toUpperCase();
-
-    if(userChoice == "ROCK" || userChoice == "PAPER" || userChoice == "SCISSORS"){
+    if(userChoice == "Rock" || userChoice == "Paper" || userChoice == "Scissors"){
         
         return userChoice;
-
-    }
-    else
-    {
-        prompt("Please enter a valid choice");
-        getUserChoice();
-    }
-
-    return userChoice;
-
-}
+}}
 
 //get the computer's chosen one from a random selection
 function getSysChoice(){
     var sysChoice = options[Math.floor(Math.random() * options.length)];
-    sysChoice = sysChoice.toUpperCase();
     return sysChoice;
 
 }
@@ -39,9 +28,9 @@ function playRound(sysChoice, userChoice){
     let roundResult;
     if 
     (
-        (userChoice === "ROCK" && sysChoice === "SCISSORS") ||
-        (userChoice === "PAPER" && sysChoice === "ROCK") ||
-        (userChoice === "SCISSORS" && sysChoice === "PAPER")
+        (userChoice === "Rock" && sysChoice === "Scissors") ||
+        (userChoice === "Paper" && sysChoice === "Rock") ||
+        (userChoice === "Scissors" && sysChoice === "Paper")
     )
     {
         userScore++;
@@ -78,12 +67,11 @@ function playRound(sysChoice, userChoice){
 
         return finalResult;
     }
-    
-    function game()
+
+    function game(userChoice, sysChoice)
     {
 
-    var sysChoice = getSysChoice();
-    var userChoice = getUserChoice();
+    roundResult = playRound(userChoice, sysChoice);
 
     const results_div = document.querySelector('results_div');
     const choices_div = document.querySelector('choices_div');
@@ -113,10 +101,22 @@ function playRound(sysChoice, userChoice){
     //-----------------------------------------------------------//
 
     const r = document.getElementById("rock_btn");
-    r.addEventListener("click",getUserChoice(), getSysChoice(), playRound(userChoice, sysChoice));
+    r.addEventListener("click",()=>{
+    userChoice === getUserChoice("Rock");
+    sysChoice === getSysChoice();
+    game(userChoice, sysChoice);
+    });
 
     const s = document.getElementById("scissors_btn");
-    s.addEventListener("click",getUserChoice(), getSysChoice(), playRound(userChoice, sysChoice));
+    s.addEventListener("click",()=>{
+        userChoice === getUserChoice("Scissors");
+        sysChoice === getSysChoice();
+        game(userChoice, sysChoice);
+        });
 
     const p = document.getElementById("paper_btn");
-    p.addEventListener("click",getUserChoice(), getSysChoice(), playRound(userChoice, sysChoice));
+    p.addEventListener("click",()=>{
+        userChoice === getUserChoice("Paper");
+        sysChoice === getSysChoice();
+    game(userChoice, sysChoice);
+    });
