@@ -8,12 +8,9 @@ let sysChoice = "";
 
 //get the user's chosen one from a prompt
 function getUserChoice(userChoice){
-    
 
-    if(userChoice == "Rock" || userChoice == "Paper" || userChoice == "Scissors"){
-        
-        return userChoice;
-}}
+    
+}
 
 //get the computer's chosen one from a random selection
 function getSysChoice(){
@@ -73,8 +70,8 @@ function playRound(sysChoice, userChoice){
 
     roundResult = playRound(userChoice, sysChoice);
 
-    const results_div = document.querySelector('results_div');
-    const choices_div = document.querySelector('choices_div');
+    const results_div = document.querySelector('#results_div');
+    const choices_div = document.querySelector('#choices_div');
 
     const uc = document.createElement('p');
     uc.textContent = "User choice is: " + userChoice;
@@ -101,7 +98,7 @@ function playRound(sysChoice, userChoice){
     //-----------------------------------------------------------//
 
     const r = document.getElementById("rock_btn");
-    r.addEventListener("click",()=>{
+    r.addEventListener("click", () => {
     userChoice === getUserChoice("Rock");
     sysChoice === getSysChoice();
     game(userChoice, sysChoice);
@@ -109,14 +106,14 @@ function playRound(sysChoice, userChoice){
 
     const s = document.getElementById("scissors_btn");
     s.addEventListener("click",()=>{
-        userChoice === getUserChoice("Scissors");
-        sysChoice === getSysChoice();
-        game(userChoice, sysChoice);
-        });
+    userChoice === getUserChoice("Scissors");
+    sysChoice === getSysChoice();
+    game(userChoice, sysChoice);
+    });
 
     const p = document.getElementById("paper_btn");
     p.addEventListener("click",()=>{
-        userChoice === getUserChoice("Paper");
-        sysChoice === getSysChoice();
+    userChoice === getUserChoice("Paper");
+    sysChoice === getSysChoice();
     game(userChoice, sysChoice);
     });
