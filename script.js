@@ -89,6 +89,8 @@ function playRound(sysChoice, userChoice){
     console.log("System choice is " + sysChoice);
     roundResult = playRound(sysChoice, userChoice);
     console.log(roundResult);
+    console.log("User Score is: " + userScore);
+    console.log("System Score is: " + systemScore);    
     console.log('\n');
     }
     finalResult = getGameResult(userScore, systemScore);
