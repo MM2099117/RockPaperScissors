@@ -5,17 +5,20 @@ var systemScore = 0;
 var gameRound = 0;
 let userChoice = "";
 let sysChoice = "";
+let buttonChoice = "";
 
 //get the user's chosen one from a prompt
-function getUserChoice(userChoice){
+function getUserChoice(buttonChoice){
 
+    userChoice = buttonChoice;
+    return userChoice;
     
 }
 
 //get the computer's chosen one from a random selection
 function getSysChoice(){
     var sysChoice = options[Math.floor(Math.random() * options.length)];
-    return sysChoice;
+    return sysChoice.toString();
 
 }
 
@@ -68,6 +71,7 @@ function playRound(sysChoice, userChoice){
     function game(userChoice, sysChoice)
     {
 
+    
     roundResult = playRound(userChoice, sysChoice);
 
     const results_div = document.querySelector('#results_div');
@@ -93,14 +97,15 @@ function playRound(sysChoice, userChoice){
 
 
     }
+    
 
 
     //-----------------------------------------------------------//
 
     const r = document.getElementById("rock_btn");
     r.addEventListener("click", () => {
-    userChoice === "Rock";
-    sysChoice === getSysChoice();
+    userChoice = getUserChoice("Rock");
+    sysChoice = getSysChoice();
     game(userChoice, sysChoice);
     });
 
