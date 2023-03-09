@@ -99,7 +99,7 @@ function playRound(sysChoice, userChoice){
 
     const r = document.getElementById("rock_btn");
     r.addEventListener("click", () => {
-    userChoice === getUserChoice("Rock");
+    userChoice === "Rock";
     sysChoice === getSysChoice();
     game(userChoice, sysChoice);
     });
